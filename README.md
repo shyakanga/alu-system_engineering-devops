@@ -1,1 +1,1 @@
-connecting through ssh
+SSH project
