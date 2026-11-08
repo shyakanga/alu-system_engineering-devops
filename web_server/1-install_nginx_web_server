@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#Configuring new server with nginx
+
+sudo apt update
+sudo apt-get -y install nginx
+
+sed -i "s/Welcome to nginx!/Holberton School/g" "/var/www/html/index.nginx-debian.html"
