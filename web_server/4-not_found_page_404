@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Configure Nginx on a brand new Ubuntu machine to add a 404 page
+
+sudo apt-get update
+sudo apt-get -y install nginx
+
+sudo sed -i "s/Welcome to nginx!/Holberton School/g" /var/www/html/index.nginx-debian.html
+
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html > /dev/null
+
+sudo sed -i '/server_name _;/a\    error_page 404 /404.html;\n    location = /404.html {\n        internal;\n    }\n\n    location = /redirect_me {\n        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n    }' /etc/nginx/sites-available/default
+
+sudo nginx -t
+sudo service nginx restart
