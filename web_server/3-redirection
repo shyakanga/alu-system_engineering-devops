@@ -6,7 +6,7 @@ sudo apt-get -y install nginx
 
 sed -i "s/Welcome to nginx!/Holberton School/g" "/var/www/html/index.nginx-debian.html"
 sed -i '/server_name _;/a\
-    \
+\
     location = /redirect_me {\
     	     return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\
     }' /etc/nginx/sites-available/default
