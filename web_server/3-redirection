@@ -4,6 +4,7 @@
 sudo apt update
 sudo apt-get -y install nginx
 
+sed -i "s/Welcome to nginx!/Holberton School/g" "/var/www/html/index.nginx-debian.html"
 sed -i 's/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;/' /etc/nginx/sites-available/default
 
 sudo service nginx restart
