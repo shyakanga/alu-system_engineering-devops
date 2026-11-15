@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Configure haproxy on a load balancer to give it to two servers using roundrobin
+
+sudo apt update
+sudo apt-get -y install haproxy
+
+sed -i '$a\
+\
+frontend http_in\
+	 bind *:80\
+	 default_backend http_out\
+\
+backend http_out\
+	balance roundrobin\
+	option forwardfor\
+	server web01 13.40.32.53:80 check\
+	server web02 18.171.177.135:80 check' '/etc/haproxy/haproxy.cfg'
+
+sudo service haproxy restart
